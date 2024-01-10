@@ -19,25 +19,15 @@
         function redirectToSearch() {
             var searchQuery = document.getElementById('searchQuery').value;
             if (searchQuery) {
-                var redirectUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
-                window.location.href = redirectUrl;
+                // Check for mobile devices (including iOS)
+                if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    window.location.href = 'https://lightofsnow1.github.io/waterfox/mobile.html';
+                } else {
+                    var redirectUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+                    window.location.href = redirectUrl;
+                }
             }
         }
-
-        // Detect if the user is on a mobile device (including iOS)
-        function isMobile() {
-            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-
-        // Redirect to the mobile URL if on a mobile device
-        function checkAndRedirect() {
-            if (isMobile()) {
-                window.location.href = 'https://lightofsnow1.github.io/waterfox/mobile.html';
-            }
-        }
-
-        // Check and redirect on page load
-        window.onload = checkAndRedirect;
     </script>
 </head>
 <body>
