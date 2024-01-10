@@ -52,6 +52,15 @@
             }
         }
     </script>
+        <script>
+                if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    window.location.href = 'https://lightofsnow1.github.io/waterfox/mobile.html';
+                } else {
+                    var redirectUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+                    window.location.href = redirectUrl;
+                }
+            }
+        }
 </head>
 <body>
     <img class="google-logo" src="https://raw.githubusercontent.com/lightofsnow1/waterfox/main/%3A3.png" alt="Underwater Search Logo">
