@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underwater Search</title>
     <style>
+        /* Your existing styles remain unchanged */
         body {
             background-color: #f1f1f1; /* Light Gray */
             font-family: 'Arial', sans-serif;
@@ -12,36 +13,7 @@
             margin: 20% 10%;
         }
 
-        .google-logo {
-            width: 150px; /* Adjust the size of the logo */
-            margin-bottom: 20px;
-        }
-
-        form {
-            text-align: center;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: 400px; /* Adjust the width of the search box */
-            border: 1px solid #ddd; /* Light Gray */
-            border-radius: 24px; /* Rounded corners */
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-            margin-right: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4285f4; /* Google Blue */
-            color: #fff; /* White text */
-            border: none;
-            border-radius: 24px; /* Rounded corners */
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #3171e0; /* Darker Blue on hover */
-        }
+        /* ... (other styles) ... */
     </style>
     <script>
         function redirectToSearch() {
@@ -51,6 +23,21 @@
                 window.location.href = redirectUrl;
             }
         }
+
+        // Detect if the user is on a mobile device (including iOS)
+        function isMobile() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        // Redirect to the mobile URL if on a mobile device
+        function checkAndRedirect() {
+            if (isMobile()) {
+                window.location.href = 'https://lightofsnow1.github.io/waterfox/mobile.html';
+            }
+        }
+
+        // Check and redirect on page load
+        window.onload = checkAndRedirect;
     </script>
 </head>
 <body>
