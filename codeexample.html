@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>game embed</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #000;
+    }
+    #embed-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    #background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom right, #000000, #000000);
+        transition: background 0.5s ease;
+        z-index: 0;
+    }
+</style>
+</head>
+<body>
+<iframe id="embed-container" src="https://www.retrogames.cc/embed/44391-mario-kart-64-amped-up-v2-91.html" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<div id="background"></div>
+
+<script>
+    // Get the iframe element
+    var iframe = document.getElementById("embed-container");
+
+    // Listen for the load event to ensure the iframe content is fully loaded
+    iframe.addEventListener("load", function() {
+        // Get the content window of the iframe
+        var iframeContent = iframe.contentWindow || iframe.contentDocument;
+
+        // Function to sample colors from the edge of the iframe
+        function sampleColors() {
+            // Get the edge pixels of the iframe
+            var edgeColors = [
+                iframeContent.document.elementFromPoint(0, 0).style.backgroundColor,
+                iframeContent.document.elementFromPoint(window.innerWidth, 0).style.backgroundColor,
+                iframeContent.document.elementFromPoint(0, window.innerHeight).style.backgroundColor,
+                iframeContent.document.elementFromPoint(window.innerWidth, window.innerHeight).style.backgroundColor
+            ];
+
+            // Set background color of the background element with gradient transition
+            document.getElementById("background").style.background = "linear-gradient(to bottom right, " + edgeColors.join(",") + ")";
+        }
+
+        // Initial sampling of colors
+        sampleColors();
+
+        // Sample colors whenever the window is resized
+        window.addEventListener("resize", sampleColors);
+    });
+</script>
+</body>
+</html>
